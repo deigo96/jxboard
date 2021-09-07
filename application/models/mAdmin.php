@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class mAdmin extends CI_Model {
+class MAdmin extends CI_Model {
 	public function checkAdmin($data)
 	{
 		return $this->db->get_where('admin', $data)->result_array(); 
@@ -46,11 +46,10 @@ class mAdmin extends CI_Model {
 		return $this->db->update('project', $data);
 	}
 
-	public function deleteProject($id_project)
+	public function hapusProject($where, $table)
 	{
-		$this->db->where('id_project', $id_project);
-		$this->db->delete('project');
-		return true;
+		$this->db->where($where);
+        $this->db->delete($table);
 	}
 
 	public function ambilData()

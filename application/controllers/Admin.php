@@ -158,11 +158,11 @@ class Admin extends CI_Controller {
 		}
 	}
 
-	public function hapusProject()
+	public function hapusProject($id_project)
 	{
 		if($this->session->userdata('id')) {
-			$id_project = $this->uri->segment(3);
-			$this->mAdmin->deleteProject($id_project);
+			$where = array('id_project' => $id_project);
+        	$this->mAdmin->hapusProject($where,'project');
 			setFlashData('alert-success', 'Data Berhasil di hapus', 'admin');
 		}
 		else {

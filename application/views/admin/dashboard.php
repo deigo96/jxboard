@@ -55,9 +55,10 @@
                                         <a href="<?php echo base_url('admin/editProject/'. $project->id_project) ?>" class="btn btn-primary btn-sm">
                                             <i class="fas fa-pencil-alt">Edit</i>
                                         </a>
-                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
+                                        <a href="" class="btn btn-danger btn-sm" data-toggle="modal" onclick="confirm_modal('<?php echo base_url('admin/hapusProject/'.$project->id_project); ?>', 'Title')" data-target="#exampleModalCenter"><i class="fas fa-trash"></i>Hapus</a>
+                                        <!-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
                                             <i class="fas fa-trash"></i> Delete
-                                        </button>
+                                        </button> -->
                                     </div>
                                 </div>
                             </div>
@@ -75,12 +76,21 @@
                                         </div> -->
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                            <a href="<?php echo base_url('admin/hapusProject/'.$project->id_project) ?>" class="btn btn-danger"><b>Hapus</b></a>
+                                            <a href="" class="btn btn-danger" id="delete_link_m_n">Hapus</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         <?php endforeach; ?>
+                        <script>
+                        function confirm_modal(delete_url,title)
+                        {
+                            jQuery('#exampleModalCenter').modal('show', {backdrop: 'static',keyboard :false});
+                            jQuery("#exampleModalCenter .grt").text(title);
+                            document.getElementById('delete_link_m_n').setAttribute("href" , delete_url );
+                            document.getElementById('delete_link_m_n').focus();
+                        }
+                        </script>
                     <?php endif; ?>
                 </div>
             </div>
